@@ -1,10 +1,11 @@
 -- Stop Neovim Daemons.
 local stop_neovim_daemons = vim.api.nvim_create_augroup("StopNeovimDaemons", { clear = true })
+local core_dir = vim.fn.fnamemodify(debug.getinfo(1, "S").source:sub(2), ":p:h")
 
 vim.api.nvim_create_autocmd("ExitPre", {
 	group = stop_neovim_daemons,
 	callback = function()
-		vim.fn.jobstart(vim.fn.expand("$SCRIPTS") .. "/stop-nvim-daemon.sh", { detach = true })
+		vim.fn.jobstart(core_dir .. "/stop-nvim-daemon.sh", { detach = true })
 	end,
 })
 
