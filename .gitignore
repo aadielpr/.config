@@ -1,0 +1,14 @@
+.DS_Store
+
+# Dependencies
+node_modules/
+
+# Local app state
+containers/
+karabiner/automatic_backups/
+tmux/.claude/
+
+# Temporary files
+*.lock
+*.tmp
+*.log

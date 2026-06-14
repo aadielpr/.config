@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+
+dir=$(fd . ~/gbmnx ~/.config --type d --max-depth 2 \
+    --exclude node_modules --exclude .git --exclude dist --exclude build \
+    | fzf)
+
+if [[ -z $dir ]]; then
+    exit 0
+fi
+
+session_name=$(basename "$dir")  # Get the name of the directory
+tmux_running=$(pgrep tmux)
+
+cd "$dir"
+
+if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
+    echo "Starting a new tmux session..."
+    tmux new-session -s "$session_name"
+    exit 0
+fi
+
+if ! tmux has-session -t "$session_name" 2>/dev/null; then
+    echo "Creating a new tmux session..."
+    tmux new-session -ds "$session_name"
+fi
+
+# Switch to the new session even if inside tmux
+echo "Switching to the tmux session..."
+if [[ -n $TMUX ]]; then
+    tmux switch-client -t "$session_name"
+else
+    tmux attach -t "$session_name"
+fi
+
+# tmux attach -t "$session_name"
+
+# Add this file directory path to front, "export PATH=$HOME/{path_dir}:$PATH"
+# Attach this keybind in .zshrc
+# bindkey -s '^f' "tmux-jump\n"
+

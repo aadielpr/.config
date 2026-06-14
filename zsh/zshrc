@@ -1,0 +1,30 @@
+# alias
+alias vi="nvim"
+alias py="python3"
+alias cr="cursor"
+
+# scripts
+export PATH=$HOME/.config/scripts:$PATH
+bindkey -s '^f' "tmux-sessionizer\n"
+alias xl="tmux-ls"
+alias xd="tmux-detach"
+alias oc="opencode"
+
+open-dir-widget() {
+    local dir
+
+    dir=$(fd . ~/.config ~/gbmnx --type d --max-depth 2 \
+        --exclude node_modules --exclude .git --exclude dist --exclude build \
+        | fzf)
+
+    if [[ -n "$dir" ]]; then
+        cd "$dir" || return 1
+        zle reset-prompt
+    fi
+}
+
+zle -N open-dir-widget
+bindkey '^p' open-dir-widget
+
+# starship
+eval "$(starship init zsh)"

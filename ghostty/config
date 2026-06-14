@@ -1,0 +1,41 @@
+theme = Vesper
+
+shell-integration-features = no-cursor,no-title
+macos-titlebar-style="hidden"
+macos-titlebar-proxy-icon="hidden"
+macos-window-shadow="false"
+
+font-family = "GeistMono Nerd Font"
+font-size = "20"
+font-style = Regular
+font-thicken
+font-thicken-strength="50"
+font-feature = "-calt"
+font-feature = "-liga"
+font-feature = "-dlig"
+adjust-cell-height = 0
+adjust-cell-width = 0
+
+cursor-style = block
+cursor-style-blink = false
+
+mouse-hide-while-typing="true"
+quit-after-last-window-closed=true
+unfocused-split-opacity=1.0
+split-divider-color="#444444"
+
+window-padding-x = 10
+window-padding-y = 5
+window-padding-balance = "true"
+
+# Font size
+keybind = all:ctrl+==increase_font_size:1
+keybind = all:ctrl++=increase_font_size:1
+keybind = all:ctrl+-=decrease_font_size:1
+keybind = all:ctrl+0=reset_font_size
+keybind = all:ctrl+shift+b=reset_font_size
+keybind = all:ctrl+shift+1=set_font_size:13
+keybind = all:ctrl+shift+2=set_font_size:15
+
+# newline
+keybind = shift+enter=text:\n

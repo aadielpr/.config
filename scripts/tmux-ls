@@ -1,0 +1,17 @@
+#!/bin/bash
+
+list=$(tmux ls | fzf)
+
+if [[ -z $list ]]; then
+    exit 0
+fi
+
+IFS=":"
+
+read -ra sesname <<< "$list"
+        
+if [[ -n $TMUX ]]; then
+    tmux switch-client -t "${sesname[0]}"
+else
+    tmux attach -t "${sesname[0]}"
+fi
