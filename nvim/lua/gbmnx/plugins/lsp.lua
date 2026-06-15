@@ -11,6 +11,8 @@ return {
 		local border = require("gbmnx.utils.border").border_chars_square
 		local map = require("gbmnx.utils.map").map
 
+		mason_lsp.setup()
+
 		vim.api.nvim_create_autocmd("LspAttach", {
 			group = vim.api.nvim_create_augroup("gbmnx_lsp_attach", { clear = true }),
 			callback = function(event)
@@ -86,12 +88,6 @@ return {
 			},
 		})
 
-		mason_lsp.setup({
-			automatic_enable = {
-				exclude = { "clangd" },
-			},
-		})
-
 		-- Diagnostic
 		vim.diagnostic.config({
 			virtual_text = true,
@@ -113,6 +109,5 @@ return {
 				prefix = "",
 			},
 		})
-
 	end,
 }
