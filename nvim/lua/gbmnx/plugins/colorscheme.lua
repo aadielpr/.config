@@ -38,9 +38,6 @@ return {
 			}
 
 			vim.cmd("colorscheme melange")
-			-- vim.api.nvim_set_hl(0, "Normal", { bg = "#101010" })
-			-- vim.api.nvim_set_hl(0, "Pmenu", { bg = "#101010" })
-			-- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#101010" })
 		end,
 	},
 	{

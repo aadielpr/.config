@@ -8,6 +8,7 @@ return {
 	config = function()
 		local mason_lsp = require("mason-lspconfig")
 		local cmp_nvim_lsp = require("cmp_nvim_lsp")
+		local border = require("gbmnx.utils.border").border_chars_square
 		local map = require("gbmnx.utils.map").map
 
 		vim.api.nvim_create_autocmd("LspAttach", {
@@ -22,10 +23,22 @@ return {
 				map("n", "gD", vim.lsp.buf.declaration, opts)
 				-- map("n", "gd", vim.lsp.buf.definition, opts)
 				map("n", "gi", vim.lsp.buf.implementation, opts)
-				map("n", "K", vim.lsp.buf.hover, opts)
+				map("n", "K", function()
+					vim.lsp.buf.hover({
+						border = border,
+						max_width = 70,
+						max_height = 15,
+					})
+				end, opts)
 				map("n", "<leader>ca", vim.lsp.buf.code_action, opts)
 				map("n", "<leader>rn", vim.lsp.buf.rename, opts)
-				map("i", "<C-h>", vim.lsp.buf.signature_help, opts)
+				map("i", "<C-h>", function()
+					vim.lsp.buf.signature_help({
+						border = border,
+						max_width = 70,
+						max_height = 15,
+					})
+				end, opts)
 				map("n", "gr", vim.lsp.buf.references, opts)
 				vim.keymap.set("n", "gd", function()
 					local client = vim.lsp.get_clients({ bufnr = 0 })[1]
@@ -61,18 +74,6 @@ return {
 
 		vim.lsp.config("*", {
 			capabilities = capabilities,
-			handlers = {
-				["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-					border = "single",
-					max_width = 70,
-					max_height = 15,
-				}),
-				["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-					border = "single",
-					max_width = 70,
-					max_height = 15,
-				}),
-			},
 		})
 
 		vim.lsp.config("lua_ls", {
@@ -104,7 +105,7 @@ return {
 			},
 			float = {
 				focusable = true,
-				border = "single",
+				border = border,
 				source = "always",
 				max_width = 70,
 				max_height = 15,
