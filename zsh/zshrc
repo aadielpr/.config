@@ -2,6 +2,7 @@
 alias vi="nvim"
 alias py="python3"
 alias cr="cursor"
+#alias crush='crush --yolo'
 
 # scripts
 export PATH=$HOME/.config/scripts:$PATH
@@ -28,3 +29,5 @@ bindkey '^p' open-dir-widget
 
 # starship
 eval "$(starship init zsh)"
+
+export GIT_EDITOR="nvim"

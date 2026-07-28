@@ -47,21 +47,22 @@ return {
 				["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
 				["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
 			},
-			sources = {
+			sources = cmp.config.sources({
 				{ name = "nvim_lsp" },
+			}, {
 				{ name = "luasnip" },
 				{ name = "path" },
 				{ name = "buffer" },
-			},
+			}),
 			sorting = {
 				priority_weight = 2,
 				comparators = {
 					cmp.config.compare.offset,
 					cmp.config.compare.exact,
 					cmp.config.compare.score,
+					cmp.config.compare.sort_text,
 					cmp.config.compare.recently_used,
 					cmp.config.compare.locality,
-					cmp.config.compare.sort_text,
 					cmp.config.compare.kind,
 					cmp.config.compare.length,
 					cmp.config.compare.order,

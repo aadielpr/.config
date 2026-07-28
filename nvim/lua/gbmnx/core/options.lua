@@ -1,6 +1,7 @@
 local opt = vim.opt
 local g = vim.g
 
+opt.background = "light"
 g.mapleader = " "
 
 opt.nu = true

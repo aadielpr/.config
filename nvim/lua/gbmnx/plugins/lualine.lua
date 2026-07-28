@@ -51,6 +51,12 @@ return {
 			return ""
 		end
 
+		local filetype_filename = require("lualine.components.filetype"):extend()
+		function filetype_filename:update_status()
+			local filename = vim.fn.expand("%:t")
+			return vim.fn.escape(filename, "%")
+		end
+
 		require("lualine").setup({
 			options = {
 				component_separators = "",
@@ -94,7 +100,7 @@ return {
 				},
 				lualine_c = {},
 				lualine_x = {},
-				lualine_y = { search_result, "filetype" },
+				lualine_y = { search_result, filetype_filename },
 				lualine_z = { "%l:%c", "%p%%/%L" },
 			}),
 			inactive_sections = {

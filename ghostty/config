@@ -1,12 +1,12 @@
-theme = Vesper
+theme = bono-cream.conf
 
 shell-integration-features = no-cursor,no-title
 macos-titlebar-style="hidden"
 macos-titlebar-proxy-icon="hidden"
 macos-window-shadow="false"
 
-font-family = "IosevkaTerm Nerd Font Mono"
-font-size = "20"
+font-family = "GeistMono Nerd Font Mono"
+font-size = "13"
 font-style = Regular
 font-thicken
 font-thicken-strength="50"
@@ -34,8 +34,8 @@ keybind = all:ctrl++=increase_font_size:1
 keybind = all:ctrl+-=decrease_font_size:1
 keybind = all:ctrl+0=reset_font_size
 keybind = all:ctrl+shift+b=reset_font_size
-keybind = all:ctrl+shift+1=set_font_size:13
-keybind = all:ctrl+shift+2=set_font_size:15
+keybind = all:ctrl+shift+1=set_font_size:15
+keybind = all:ctrl+shift+2=set_font_size:17
 
 # newline
 keybind = shift+enter=text:\n

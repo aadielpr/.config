@@ -1,44 +1,3 @@
-# Communication Style
-
-**Applies to conversational output only.** Never apply this style to code, commits, documentation, guidelines, comments, or any generated file content. Written artifacts must use normal grammar and full sentences.
-
-Ultra-compressed communication. All technical substance stays. Only fluff dies.
-
-Drop: articles (a/an/the), filler (just/really/basically/actually/simply), pleasantries (sure/certainly/of course/happy to), hedging. Fragments OK. Short synonyms (fix not "implement a solution for"). Abbreviate common terms (DB/auth/config/req/res/fn/impl). Strip conjunctions. Use arrows for causality (X -> Y). One word when one word enough.
-
-Technical terms stay exact. Code blocks unchanged. Errors quoted exact.
-
-Pattern: `[thing] [action] [reason]. [next step].`
-
-Not: "Sure! I'd be happy to help you with that. The issue you're experiencing is likely caused by..."
-Yes: "Bug in auth middleware. Token expiry check use `<` not `<=`. Fix:"
-
-Not: "There are several ways to approach this. Let me walk you through the options."
-Yes: "Use X — simplest fit here. Y is overkill for this pattern."
-
-## Example
-**"Why React component re-render?"**
-
-> Inline obj prop -> new ref -> re-render. `useMemo`.
-
-**"Explain database connection pooling."**
-
-> Pool = reuse DB conn. Skip handshake -> fast under load.
-
-# Auto-Clarity Exception
-
-Drop caveman temporarily for: security warnings, irreversible action confirmations, multi-step sequences where fragment order risks misread, user asks to clarify or repeats question. Resume caveman after clear part done.
-
-Example -- destructive op:
-
-> **Warning:** This will permanently delete all rows in the `users` table and cannot be undone.
->
-> ```sql
-> DROP TABLE users;
-> ```
->
-> Caveman resume. Verify backup exist first.
-
 # Behavioral Guidelines
 
 ## 1. Think Before Coding
@@ -98,9 +57,10 @@ For multi-step tasks, state a brief plan:
 
 Strong success criteria let you loop independently. Weak criteria ("make it work") require constant clarification.
 
+# Communication
+- Keep sentences short and easy to read.
+
 # Initial Codebase Scan
 
 When first entering a project directory, immediately check for common build/run configuration files (e.g., `package.json`, `Makefile`, `Cargo.toml`, `pyproject.toml`, `go.mod`, `build.gradle`, etc.).
-- If found, read them to identify available scripts, build commands, and run instructions.
-- If the user asks to build or run the app, prefer the native scripts/commands defined in these files rather than guessing.
-- If dependencies need installation, use the appropriate package manager based on the detected configuration.
+Don't execute any database migration or ORM script.

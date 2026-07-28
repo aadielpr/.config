@@ -3,8 +3,8 @@ local map = require("gbmnx.utils.map").map
 map("n", "ss", "<Cmd>split<CR><C-w>w")
 map("n", "sv", "<Cmd>vsplit<CR><C-w>w")
 -- These mappings control the size of splits (height/width)
-map("n", "<M-,>", "<c-w>5<")
-map("n", "<M-.>", "<c-w>5>")
+map("n", "<leader>l", "<C-w>5<")
+map("n", "<leader>h", "<C-w>5>")
 map("n", "<M-t>", "<C-W>+")
 map("n", "<M-s>", "<C-W>-")
 -- Move between window
@@ -67,3 +67,17 @@ map("n", "<leader>tw", "<cmd>TabToggle<CR>")
 
 vim.keymap.set("v", "<Tab>", ">gv", { desc = "Increase indentation" })
 vim.keymap.set("v", "<S-Tab>", "<gv", { desc = "Decrease indentation" })
+
+-- Rename word under cursor across all files in the quickfix list
+-- Uses :cfdo to run substitution in each file, then saves changed files
+map("n", "<leader>qr", function()
+  local word = vim.fn.expand("<cword>")
+  if word == "" then
+    print("No word under cursor")
+    return
+  end
+  local replacement = vim.fn.input("Replace '" .. word .. "' with: ")
+  if replacement ~= "" then
+    vim.cmd("cfdo %s/\\<" .. word .. "\\>/" .. replacement .. "/gc | update")
+  end
+end, { desc = "Rename word in quickfix list" })
