@@ -8,7 +8,7 @@ if [[ -z $dir ]]; then
     exit 0
 fi
 
-session_name=$(basename "$dir")  # Get the name of the directory
+session_name=$(basename "$dir" | tr '.' '_')  # Get the name of the directory, sanitize for tmux
 tmux_running=$(pgrep tmux)
 
 cd "$dir"
