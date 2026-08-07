@@ -24,9 +24,9 @@ return {
                 "tsgo",
 				"lua-language-server",
 				"gopls",
-				"python-lsp-server",
 				"clangd",
                 "html-lsp",
+                "pyright",
 				-- Formatters
 				"prettierd",
 				"stylua",

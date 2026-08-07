@@ -36,6 +36,8 @@ keybind = all:ctrl+0=reset_font_size
 keybind = all:ctrl+shift+b=reset_font_size
 keybind = all:ctrl+shift+1=set_font_size:15
 keybind = all:ctrl+shift+2=set_font_size:17
+keybind = all:ctrl+shift+3=set_font_size:20
+keybind = all:ctrl+shift+4=set_font_size:22
 
 # newline
 keybind = shift+enter=text:\n

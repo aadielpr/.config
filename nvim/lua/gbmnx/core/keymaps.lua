@@ -81,3 +81,8 @@ map("n", "<leader>qr", function()
     vim.cmd("cfdo %s/\\<" .. word .. "\\>/" .. replacement .. "/gc | update")
   end
 end, { desc = "Rename word in quickfix list" })
+
+-- pi.nvim
+map("n", "<leader>ai", ":PiAsk<CR>", { desc = "Ask pi" })
+map("v", "<leader>ai", ":PiAskSelection<CR>", { desc = "Ask pi (selection)" })
+map("n", "<leader>ac", ":PiCancel<CR>", { desc = "Cancel pi" })

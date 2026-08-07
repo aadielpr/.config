@@ -8,6 +8,7 @@ containers/
 karabiner/automatic_backups/
 tmux/.claude/
 opencode/
+.system
 
 # Temporary files
 *.lock

@@ -26,7 +26,8 @@ return {
 		end,
 	},
 	{
-		"aadielpr/bono.nvim",
+		-- "aadielpr/bono.nvim",
+        dir = "~/gbmnx/dev/bono.nvim",
 		lazy = active ~= "bono",
 		priority = 1000,
 		config = function()
